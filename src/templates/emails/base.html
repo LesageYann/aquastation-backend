@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="x-apple-disable-message-reformatting">
+        <link rel="stylesheet" href="style.css"/>
+        {% block head %}
+        <title>{% block title %}{% endblock title %} - Aquastation</title>
+        {% endblock head %}
+    </head>
+    <body>
+
+        <div id="content">
+            <p>Hello {{username}},</p>
+            {% block content %}{% endblock content %}</div>
+        <div id="footer">
+            {% block footer %}
+            {% endblock footer %}
+            <a href="{{domain}}">Aquastation</a>.
+        </div>
+    </body>
+</html>
