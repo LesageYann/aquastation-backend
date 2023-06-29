@@ -23,6 +23,5 @@ async fn main() {
     Server::new(addr,state)
         .start()
         .await;
-    println!("server start on port {}", port)
 }
 

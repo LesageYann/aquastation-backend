@@ -1,6 +1,7 @@
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
+
 use crate::data_sources::users::DataUser;
 use crate::model::error::ASError;
 use crate::model::user_management_payload::UserManagementPayload;

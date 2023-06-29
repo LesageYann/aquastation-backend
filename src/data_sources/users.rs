@@ -1,6 +1,5 @@
 use sqlx;
 use sqlx::PgPool;
-use sqlx::Result;
 use chrono::Utc;
 
 use crate::model::user::User;
@@ -26,7 +25,7 @@ impl DataUser {
 
     pub async fn auth_with_mail(pool: &PgPool, email: String, password: String) -> Option<User> {
         let result = sqlx::query_as!(User,
-        "SELECT id, username, email FROM core.user WHERE email = $1 AND password= $2",
+        "SELECT id, username, email FROM core.user WHERE email = $1 AND password = crypt($2, password)",
         email, password)
             .fetch_one(pool)
             .await;
@@ -41,7 +40,7 @@ impl DataUser {
 
     pub async fn update_password(pool: &PgPool, id: i32, new_password: String) -> Option<User> {
         let result = sqlx::query_as!(User,
-        "UPDATE core.user SET password = $2, token = NULL, token_created_at = NULL  WHERE id = $1 RETURNING id, username, email",
+        "UPDATE core.user SET password = crypt($2, gen_salt('bf', 8)), token = NULL, token_created_at = NULL  WHERE id = $1 RETURNING id, username, email",
         id, new_password)
             .fetch_one(pool)
             .await;

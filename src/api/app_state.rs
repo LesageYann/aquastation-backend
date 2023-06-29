@@ -45,7 +45,7 @@ impl AppState {
                     template_engine: get_engine()
                 }
             }
-            Err(e) => panic!("{}", e)
+            Err(e) => panic!("pg pool error : {}", e)
         }
     }
 }

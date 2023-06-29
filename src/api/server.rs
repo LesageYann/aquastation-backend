@@ -1,6 +1,8 @@
 use std::net::SocketAddr;
-
-use axum::Router;
+use tower_http::cors::CorsLayer;
+use axum::http::{HeaderValue, Method};
+use axum::{http, Router};
+use axum::http::header::CONTENT_TYPE;
 
 use crate::api::app_state::AppState;
 use crate::api::containers::build_containers_router;
@@ -20,7 +22,13 @@ impl Server {
             .nest("/probes", build_probes_router())
             .with_state(state);
         let main_router = Router::new()
-            .nest("/api", api_router);
+            .nest("/api", api_router)
+            .layer(
+                CorsLayer::new()
+                    .allow_origin("http://localhost:8080".parse::<HeaderValue>().unwrap())
+                    .allow_headers([CONTENT_TYPE])
+                    .allow_methods([Method::GET, Method::POST, Method::PATCH]),
+            );
         Server::new_with_router(addr, main_router)
     }
 

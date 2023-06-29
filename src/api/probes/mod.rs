@@ -36,7 +36,7 @@ async fn handle_get_one(State(state): State<AppState>, Path(probe_id): Path<Stri
                 None => {StatusCode::NOT_FOUND.into_response()}
             }
         }
-       Err(err) => {
+       Err(_err) => {
             StatusCode::BAD_REQUEST.into_response()
        }
     }

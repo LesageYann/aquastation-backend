@@ -2,10 +2,11 @@ use tera::Tera;
 
 
 pub fn get_engine() -> Tera {
-    let tera = match Tera::new("templates/**/*.html") {
+    println!("init Tera engine");
+    let tera = match Tera::new("./**/*.html") {
         Ok(t) => t,
         Err(e) => {
-            println!("Parsing error(s): {}", e);
+            println!("Tera parsing error(s): {}", e);
             ::std::process::exit(1);
         }
     };
