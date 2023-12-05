@@ -1,0 +1,45 @@
+:root {
+  --shadow: grey 0px 1px 5px;
+  --shadow-hover: #2a2a2a 0px  1px 2px;
+}
+
+.card {
+  border-radius: 17px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 3.2rem 1fr 3.2rem;
+
+  .card-title {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+    margin: 0px;
+    padding: 10px;
+  }
+
+  .card-content {
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  > *:not(.card-title) {
+    padding: 10px;
+  }
+
+  .actions {
+    display: grid;
+    justify-content: flex-end;
+  }
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  padding: 20px 40px;
+
+  .card {
+    flex-grow: 1;
+  }
+}

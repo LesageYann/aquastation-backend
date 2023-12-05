@@ -1,0 +1,72 @@
+@import "styles/variables";
+@import "styles/button";
+@import "styles/card";
+@import "styles/form";
+@import "styles/table";
+@import "styles/loader";
+
+html, body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: #f0f0f0;
+  background-image: url("../public/fish.jpg");
+  background-size: 25px;
+
+  .page {
+    grid-template-columns: 200px 1fr;
+    display: grid;
+    height: 100%;
+  }
+
+  .log-page {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+  }
+
+  .ponics-logging form {
+    width: 300px;
+    display: grid;
+    justify-items: end;
+
+    label {
+      margin-bottom: 0.7em;
+    }
+  }
+
+  nav {
+    height: 100%;
+
+    ul {
+      padding: 0px;
+      margin: 0px;
+      height: 100%;
+      color: white;
+      background-color: var(--secondary-color);
+
+      li {
+        list-style: none;
+        background-color: var(--secondary-color);
+        padding: 10px 20px;
+        text-transform: capitalize;
+        border-bottom: 2px solid var(--secondary-color-variant);
+
+        .is-active {
+          background-color: var(--secondary-color-variant);
+        }
+
+        a {
+          color: inherit;
+          text-decoration: inherit;
+          height: 100%;
+          display: block;
+        }
+      }
+    }
+
+  }
+}

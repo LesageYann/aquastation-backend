@@ -1,0 +1,243 @@
+:root {
+  --primary-color: #4182b3;
+  --primary-color-variant: #4fa2d4;
+  --secondary-color: #263238;
+  --secondary-color-variant: #37474F;
+  --analogous-1:#41b3ab;
+  --analogous-2: #4148b3;
+  --triadic-1: #7241b3;
+  --triadic-2: #b34181;
+  --background-color: white;
+  --surface-color: white;
+  --error-color: red;
+  --on-primary-color: #F0F0F0;
+  --on-secondary-color: back;
+  --on-background-color: back;
+  --on-surface-color: back;
+  --on-error-color: white;
+}
+
+@keyframes growAndFade {
+  0% {
+    opacity: 0.6;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+button {
+  transition: box-shadow 0.3s ease-out;
+  position: relative;
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-radius: 50px;
+  border: unset;
+  padding: 0.2em 1em 0.4em 1em;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+button:hover {
+  box-shadow: var(--shadow-hover);
+  transition: box-shadow 0.3s ease-out;
+}
+
+button::after {
+  position: absolute;
+  left: -6px;
+  top: -2px;
+  content: "";
+  animation: growAndFade 0.5s ease-out;
+  background-color: var(--primary-color-variant);
+  border-radius: 50px;
+  height: 120%;
+  opacity: 0;
+  width: 120%;
+}
+
+button:active::after {
+  animation: all 0s;
+  height: 0%;
+  opacity: 0;
+  width: 0%;
+}
+
+:root {
+  --shadow: grey 0px 1px 5px;
+  --shadow-hover: #2a2a2a 0px 1px 2px;
+}
+
+.card {
+  border-radius: 17px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 3.2rem 1fr 3.2rem;
+}
+.card .card-title {
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  margin: 0px;
+  padding: 10px;
+}
+.card .card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+.card > *:not(.card-title) {
+  padding: 10px;
+}
+.card .actions {
+  display: grid;
+  justify-content: flex-end;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  padding: 20px 40px;
+}
+.card-container .card {
+  flex-grow: 1;
+}
+
+form label {
+  height: 1.9em;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+form label * {
+  position: absolute;
+}
+form label span {
+  z-index: 10;
+  bottom: 1.3em;
+  font-size: 0.8em;
+  transition-property: bottom, font-size;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+form label input, form label input:focus {
+  box-shadow: unset;
+  outline: none;
+  border: 0px solid black;
+  bottom: 0px;
+  border-bottom: 1px solid var(--primary-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+form label:not(.filled):not(:focus-within) span {
+  bottom: 0px;
+  font-size: 1.2em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table thead th {
+  position: sticky;
+  top: 0;
+}
+
+.loader {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*source of lds-dual-ring: https://loading.io/css/ */
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #4182b3 #263238 #263238 #263238;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+html, body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: #f0f0f0;
+  background-image: url("../public/fish.jpg");
+  background-size: 25px;
+}
+html .page, body .page {
+  grid-template-columns: 200px 1fr;
+  display: grid;
+  height: 100%;
+}
+html .log-page, body .log-page {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+}
+html .ponics-logging form, body .ponics-logging form {
+  width: 300px;
+  display: grid;
+  justify-items: end;
+}
+html .ponics-logging form label, body .ponics-logging form label {
+  margin-bottom: 0.7em;
+}
+html nav, body nav {
+  height: 100%;
+}
+html nav ul, body nav ul {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  color: white;
+  background-color: var(--secondary-color);
+}
+html nav ul li, body nav ul li {
+  list-style: none;
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  text-transform: capitalize;
+  border-bottom: 2px solid var(--secondary-color-variant);
+}
+html nav ul li .is-active, body nav ul li .is-active {
+  background-color: var(--secondary-color-variant);
+}
+html nav ul li a, body nav ul li a {
+  color: inherit;
+  text-decoration: inherit;
+  height: 100%;
+  display: block;
+}

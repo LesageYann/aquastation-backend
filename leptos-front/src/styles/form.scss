@@ -1,0 +1,39 @@
+form {
+  label {
+    height: 1.9em;
+    position: relative;
+    display: block;
+    width: 100%;
+
+    * {
+      position: absolute;
+    }
+
+    span {
+      z-index: 10;
+      bottom: 1.3em;
+      font-size: 0.8em;
+      transition-property: bottom, font-size;
+      transition-duration: 150ms;
+      transition-timing-function: ease-out;
+    }
+
+    input, input:focus {
+      box-shadow: unset;
+      outline: none;
+      border: 0px solid black;
+      bottom: 0px;
+      border-bottom: 1px solid var(--primary-color);
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  label:not(.filled):not(:focus-within) {
+    span {
+      bottom: 0px;
+      font-size: 1.2em;
+    }
+
+  }
+}

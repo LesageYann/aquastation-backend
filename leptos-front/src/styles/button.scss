@@ -1,0 +1,55 @@
+
+@keyframes growAndFade {
+  0% {
+    opacity: .60;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+button {
+  transition: box-shadow 0.3s ease-out;
+  position: relative;
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-radius: 50px;
+  border: unset;
+  padding: 0.2em 1em 0.4em 1em;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+button:hover {
+  box-shadow: var(--shadow-hover);
+  transition: box-shadow 0.3s ease-out;
+}
+
+button::after {
+  position: absolute;
+  left: -6px;
+  top: -2px;
+  content: "";
+  animation: growAndFade 0.5s ease-out;
+  background-color: var(--primary-color-variant);
+  border-radius: 50px;
+  height: 120%;
+  opacity: 0;
+  width: 120%;
+}
+
+button:active::after {
+  animation: all 0s;
+  height: 0%;
+  opacity: 0;
+  width: 0%;
+}
